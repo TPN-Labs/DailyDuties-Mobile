@@ -7,7 +7,6 @@ import 'package:dailyduties/controller/student/meeting_controller.dart';
 import 'package:dailyduties/model/student/meeting_model.dart';
 import 'package:dailyduties/model/student/student_model.dart';
 import 'package:dailyduties/utils/date_utils.dart';
-import 'package:dailyduties/view/student/view_student_screen.dart';
 
 import 'custom_button.dart';
 
@@ -41,21 +40,7 @@ Widget meetingList({
           right: 10,
         ),
         child: InkWell(
-          onTap: () {
-            isOnHomeScreen == true
-                ? Get.to(
-                    () => ViewStudentScreen(
-                      context,
-                      refreshList,
-                      studentModel!,
-                    ),
-                    transition: Transition.rightToLeft,
-                    duration: const Duration(
-                      milliseconds: Constants.transitionDuration,
-                    ),
-                  )
-                : {};
-          },
+          onTap: () {},
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

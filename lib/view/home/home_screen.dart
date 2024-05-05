@@ -10,8 +10,6 @@ import 'package:dailyduties/model/student/meeting_model.dart';
 import 'package:dailyduties/model/student/student_model.dart';
 import 'package:dailyduties/utils/transform_models.dart';
 import 'package:dailyduties/view/settings/settings_screen.dart';
-import 'package:dailyduties/view/student/meeting/all_meetings_screen.dart';
-import 'package:dailyduties/view/student/all_students_screen.dart';
 import 'package:dailyduties/widget/custom_meeting_list.dart';
 import 'package:dailyduties/widget/custom_quick.dart';
 
@@ -165,11 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           InkWell(
                             onTap: () {
                               Get.to(
-                                () => const AllMeetingsScreen(),
-                                transition: Transition.rightToLeft,
-                                duration: const Duration(
-                                  milliseconds: Constants.transitionDuration,
-                                ),
+                                () => {},
                               );
                             },
                             child: quickAccessContainer(
@@ -187,11 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           InkWell(
                             onTap: () {
                               Get.to(
-                                () => const AllStudentsScreen(),
-                                transition: Transition.rightToLeft,
-                                duration: const Duration(
-                                  milliseconds: Constants.transitionDuration,
-                                ),
+                                () => {},
                               );
                             },
                             child: quickAccessContainer(
