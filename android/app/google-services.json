@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "111103686317",
+    "project_id": "daily-duties-33b73",
+    "storage_bucket": "daily-duties-33b73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111103686317:android:3630695d0c08ac0cf67824",
+        "android_client_info": {
+          "package_name": "com.tpnindustries.progressp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABABfI2Gvs7xF4wIML6DWEb9DxtadPmLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
