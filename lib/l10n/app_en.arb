@@ -1,4 +1,13 @@
 {
+    "firebase_auth_error_user_not_found": "User not found",
+    "firebase_auth_error_wrong_password": "Wrong password",
+    "firebase_auth_error_email_already_in_use": "Email already in use",
+    "firebase_auth_error_weak_password": "Password is too weak",
+    "firebase_auth_error_invalid_email": "Invalid email",
+    "firebase_auth_error_invalid_credential": "Email or password is invalid",
+    "firebase_auth_error_user_disabled": "User is disabled",
+    "firebase_auth_error_unknown": "Unknown error",
+
     "welcome": "Welcome",
     "welcome_headline": "Stay on track with your fitness Clients: introducing Daily Duties!",
     "welcome_login": "Login",

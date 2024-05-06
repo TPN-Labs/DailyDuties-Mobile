@@ -99,7 +99,7 @@ class AppTheme {
     final ThemeData base = ThemeData.light();
     return base.copyWith(
       appBarTheme: const AppBarTheme(color: Colors.white),
-      bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xffd9d6ff)),
+      bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xffEEF0EF)),
       canvasColor: Colors.white,
       cardColor: Colors.white,
       colorScheme: colorScheme.copyWith(background: Colors.white),

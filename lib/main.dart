@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -7,15 +9,13 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:dailyduties/config/constants.dart';
 import 'package:dailyduties/config/textstyle.dart';
-import 'package:dailyduties/controller/student/meeting_controller.dart';
-import 'package:dailyduties/controller/student/note_controller.dart';
-import 'package:dailyduties/controller/student/student_controller.dart';
 import 'package:dailyduties/view/home/home_screen.dart';
 import 'package:dailyduties/view/welcome_screen.dart';
 
 void main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -46,10 +46,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final APIMeetingController _apiMeetingController = Get.put(APIMeetingController());
-  final APIStudentController _apiStudentController = Get.put(APIStudentController());
-  final APINoteController _apiNoteController = Get.put(APINoteController());
-  final String? _authKey = GetStorage().read(StorageKeys.authKey);
+  final bool _isUserLoggedIn = FirebaseAuth.instance.currentUser != null;
 
   ThemeMode _colorScheme = ThemeMode.system;
 
@@ -105,15 +102,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    _apiMeetingController.userGetAll();
-    _apiStudentController.userGetAll();
-    _apiNoteController.userGetAll();
-
     return GetMaterialApp(
       title: 'Daily Duties',
       debugShowCheckedModeBanner: false,
       theme: getThemeMode(),
-      home: _authKey != null ? const HomeScreen() : const WelcomeScreen(),
+      home: _isUserLoggedIn ? const HomeScreen() : const WelcomeScreen(),
       locale: _appLocale,
       localizationsDelegates: const [
         AppLocalizations.delegate,
