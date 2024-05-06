@@ -24,6 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
+        backgroundColor: Theme.of(context).bottomAppBarTheme.color,
         appBar: AppBar(
           backgroundColor: Theme.of(context).bottomAppBarTheme.color,
           elevation: 0,

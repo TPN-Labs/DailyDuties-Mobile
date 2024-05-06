@@ -1,4 +1,13 @@
 {
+    "firebase_auth_error_user_not_found": "Utilizatorul nu a fost gasit",
+    "firebase_auth_error_wrong_password": "Parola incorecta",
+    "firebase_auth_error_email_already_in_use": "Adresa de e-mail este deja folosita",
+    "firebase_auth_error_weak_password": "Parola este prea slaba",
+    "firebase_auth_error_invalid_email": "Adresa de e-mail este invalida",
+    "firebase_auth_error_invalid_credential": "Adresa de e-mail sau parola sunt invalide",
+    "firebase_auth_error_user_disabled": "Utilizatorul este dezactivat",
+    "firebase_auth_error_unknown": "Eroare necunoscuta",
+
     "welcome": "Salutare",
     "welcome_headline": "Organizați-vă antrenamentele pentru clienții dumneavoastra cu Daily Duties!",
     "welcome_login": "Autentificare",

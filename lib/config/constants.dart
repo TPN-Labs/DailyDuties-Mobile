@@ -24,11 +24,6 @@ enum WeekStart {
 const List<String> allGenders = <String>['Male', 'Female', 'Other'];
 
 class Constants {
-  static const String apiHost = 'server.progress-pro.app';
-  static const String apiEndpoint = 'https://$apiHost/api';
-
-  // static const String apiEndpoint = 'http://127.0.0.1:3000/api';
-
   static const double topBarHeight = 70.0;
   static const double iconSize = 24.0;
   static const int transitionDuration = 350;
@@ -75,13 +70,14 @@ class Constants {
 
 class DefaultMargins {
   static const double smallMargin = 10.0;
+  static const double mediumMargin = 20.0;
+  static const double largeMargin = 100.0;
 }
 
 class StorageKeys {
   static const String appThemeMode = 'appThemeMode';
   static const String appWeekStart = 'appWeekStart';
   static const String appLanguage = 'appLanguage';
-  static const String authKey = 'authKey';
   static const String allMeetings = 'allMeetings';
   static const String allNotes = 'allNotes';
   static const String allStudents = 'allStudents';

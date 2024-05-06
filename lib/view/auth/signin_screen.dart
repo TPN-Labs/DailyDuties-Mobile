@@ -25,6 +25,7 @@ class _SignInScreenState extends State<SignInScreen> {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
+      backgroundColor: Theme.of(context).bottomAppBarTheme.color,
       appBar: AppBar(
         backgroundColor: Theme.of(context).bottomAppBarTheme.color,
         elevation: 0,
@@ -48,24 +49,13 @@ class _SignInScreenState extends State<SignInScreen> {
       body: SingleChildScrollView(
         reverse: true,
         child: Container(
-          height: Get.height - 100,
+          height: Get.height,
           color: Theme.of(context).bottomAppBarTheme.color,
           child: Padding(
             padding: Constants.defaultScreenPadding,
             child: Column(
               children: [
-                const SizedBox(height: DefaultMargins.smallMargin),
-                Container(
-                  height: 300,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        DefaultImages.singInImage,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
+                const SizedBox(height: DefaultMargins.largeMargin),
                 CustomTextFormField(
                   prefix: Padding(
                     padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -77,7 +67,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   hintText: l10n.signin_user,
                   inputType: TextInputType.text,
-                  textEditingController: _loginController.userInputController.value,
+                  textEditingController: _loginController.emailController.value,
                   capitalization: TextCapitalization.none,
                   limit: [
                     LengthLimitingTextInputFormatter(30),
@@ -127,7 +117,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   onTap: () {
                     _apiAuthController.sendLogin(
                       context,
-                      _loginController.userInputController.value.text,
+                      _loginController.emailController.value.text,
                       _loginController.passwordController.value.text,
                     );
                   },

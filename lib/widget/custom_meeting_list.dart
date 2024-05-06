@@ -3,11 +3,9 @@ import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:dailyduties/config/textstyle.dart';
 import 'package:dailyduties/config/constants.dart';
-import 'package:dailyduties/controller/student/meeting_controller.dart';
 import 'package:dailyduties/model/student/meeting_model.dart';
 import 'package:dailyduties/model/student/student_model.dart';
 import 'package:dailyduties/utils/date_utils.dart';
-import 'package:dailyduties/view/student/view_student_screen.dart';
 
 import 'custom_button.dart';
 
@@ -19,8 +17,7 @@ Widget meetingList({
   Function? refreshList,
 }) {
   final l10n = AppLocalizations.of(context)!;
-  final APIMeetingController _apiMeetingController =
-      Get.put(APIMeetingController());
+  //final APIMeetingController _apiMeetingController = Get.put(APIMeetingController());
 
   return Padding(
     padding: const EdgeInsets.only(bottom: 10),
@@ -41,21 +38,7 @@ Widget meetingList({
           right: 10,
         ),
         child: InkWell(
-          onTap: () {
-            isOnHomeScreen == true
-                ? Get.to(
-                    () => ViewStudentScreen(
-                      context,
-                      refreshList,
-                      studentModel!,
-                    ),
-                    transition: Transition.rightToLeft,
-                    duration: const Duration(
-                      milliseconds: Constants.transitionDuration,
-                    ),
-                  )
-                : {};
-          },
+          onTap: () {},
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -215,12 +198,12 @@ Widget meetingList({
                                       style: const TextStyle(color: Colors.red),
                                     ),
                                     onPressed: () {
-                                      _apiMeetingController.userDelete(
+                                      /*_apiMeetingController.userDelete(
                                         context,
                                         studentModel!.id,
                                         meetingData.id,
                                         refreshList!,
-                                      );
+                                      );*/
                                       Navigator.of(contextDialog).pop();
                                     },
                                   ),

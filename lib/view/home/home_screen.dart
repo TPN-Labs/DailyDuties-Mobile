@@ -3,15 +3,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:dailyduties/config/constants.dart';
 import 'package:dailyduties/config/textstyle.dart';
-import 'package:dailyduties/controller/student/meeting_controller.dart';
-import 'package:dailyduties/controller/student/student_controller.dart';
 import 'package:dailyduties/controller/user/auth_controller.dart';
 import 'package:dailyduties/model/student/meeting_model.dart';
 import 'package:dailyduties/model/student/student_model.dart';
-import 'package:dailyduties/utils/transform_models.dart';
 import 'package:dailyduties/view/settings/settings_screen.dart';
-import 'package:dailyduties/view/student/meeting/all_meetings_screen.dart';
-import 'package:dailyduties/view/student/all_students_screen.dart';
 import 'package:dailyduties/widget/custom_meeting_list.dart';
 import 'package:dailyduties/widget/custom_quick.dart';
 
@@ -23,40 +18,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final APIStudentController _apiStudentController =
-      Get.put(APIStudentController());
-  final APIMeetingController _apiMeetingController =
-      Get.put(APIMeetingController());
   final APIAuthController _apiAuthController = Get.put(APIAuthController());
 
   List<StudentModel>? _allStudents;
   List<MeetingModel>? _allMeetings;
 
-  void loadStudentsAndMeetings() async {
-    await _apiStudentController.userGetAll();
-    await _apiMeetingController.userGetAll();
-
-    List<StudentModel> allStudents = _apiStudentController.getAllStudents();
-    List<MeetingModel> upcomingMeetings =
-        List<MeetingModel>.empty(growable: true);
-    for (var student in allStudents) {
-      MeetingModel? latestMeeting =
-          _apiMeetingController.getLatestMeeting(student.id);
-      if (latestMeeting != null) {
-        upcomingMeetings.add(latestMeeting);
-      }
-    }
-
-    setState(() {
-      _allStudents = allStudents;
-      _allMeetings = upcomingMeetings
-        ..sort((a, b) => b.startAt.toString().compareTo(a.startAt.toString()));
-    });
-  }
-
   @override
   void initState() {
-    loadStudentsAndMeetings();
+    //loadStudentsAndMeetings();
     super.initState();
   }
 
@@ -165,11 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           InkWell(
                             onTap: () {
                               Get.to(
-                                () => const AllMeetingsScreen(),
-                                transition: Transition.rightToLeft,
-                                duration: const Duration(
-                                  milliseconds: Constants.transitionDuration,
-                                ),
+                                () => {},
                               );
                             },
                             child: quickAccessContainer(
@@ -187,11 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           InkWell(
                             onTap: () {
                               Get.to(
-                                () => const AllStudentsScreen(),
-                                transition: Transition.rightToLeft,
-                                duration: const Duration(
-                                  milliseconds: Constants.transitionDuration,
-                                ),
+                                () => {},
                               );
                             },
                             child: quickAccessContainer(
@@ -233,23 +194,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               Theme.of(context).textTheme.bodyMedium!.copyWith(
                                     fontSize: 18,
                                   ),
-                        ),
-                        const SizedBox(height: 20),
-                        Column(
-                          children: [
-                            if (_allStudents != null) ...[
-                              for (var i = 0; i < _allMeetings!.length; i++)
-                                meetingList(
-                                  context: context,
-                                  meetingData: _allMeetings!.elementAt(i),
-                                  isOnHomeScreen: true,
-                                  studentModel: getStudentOfMeeting(
-                                    _allMeetings!.elementAt(i),
-                                  ),
-                                  refreshList: loadStudentsAndMeetings,
-                                ),
-                            ],
-                          ],
                         ),
                         const SizedBox(height: 20),
                       ],
